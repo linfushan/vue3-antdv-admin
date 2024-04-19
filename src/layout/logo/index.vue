@@ -17,6 +17,7 @@
   .logo {
     @apply flex overflow-hidden whitespace-nowrap items-center;
 
+    // min-width: var(--app-sidemenu-width);
     height: 64px;
     padding-left: 24px;
     line-height: 64px;

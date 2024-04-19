@@ -3,6 +3,7 @@
     <div class="header-left">
       <slot name="left">
         <Space :size="20">
+          <Logo v-if="layoutSetting.layout === 'fulltop'" :collapsed="collapsed" />
           <span
             class="menu-fold cursor-pointer"
             @click="() => emit('update:collapsed', !collapsed)"
@@ -48,6 +49,7 @@
 
 <script lang="tsx" setup>
   import { computed, type CSSProperties } from 'vue';
+  import { storeToRefs } from 'pinia';
   import { useRouter, useRoute } from 'vue-router';
   import {
     QuestionCircleOutlined,
@@ -67,6 +69,7 @@
     Tooltip,
     type MenuTheme,
   } from 'ant-design-vue';
+  import Logo from '../logo/index.vue';
   import { Search, FullScreen, ProjectSetting, LayoutBreadcrumb } from './components/';
   import { LocalePicker } from '@/components/basic/locale-picker';
   import { useUserStore } from '@/store/modules/user';
@@ -86,6 +89,7 @@
   const emit = defineEmits(['update:collapsed']);
   const userStore = useUserStore();
   const layoutSettingStore = useLayoutSettingStore();
+  const { layoutSetting } = storeToRefs(layoutSettingStore);
   const lockscreenStore = useLockscreenStore();
   const keepAliveStore = useKeepAliveStore();
 

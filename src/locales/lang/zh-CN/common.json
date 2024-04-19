@@ -14,7 +14,7 @@
   "resetText": "重置",
   "routes": {
     "account": {
-      "settings": ""
+      "settings": "设置"
     }
   },
   "saveText": "保存",

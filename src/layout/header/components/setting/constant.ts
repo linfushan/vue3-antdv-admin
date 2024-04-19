@@ -79,6 +79,10 @@ export const layouts = [
     label: '顶部菜单布局',
     value: 'topmenu',
   },
+  {
+    label: '头部占满布局',
+    value: 'fulltop',
+  },
 ] as const;
 
 /** 界面显示相关 */

@@ -22,7 +22,20 @@
         </template>
       </PageHeader>
       <Layout.Content class="layout-content">
-        <tabs-view />
+        <Layout>
+          <Layout.Sider
+            v-if="layoutSetting.layout === 'fulltop'"
+            v-model:collapsed="collapsed"
+            :width="asiderWidth"
+            :trigger="null"
+            collapsible
+            :theme="getTheme"
+            class="layout-sider"
+          >
+            <AsideMenu :collapsed="collapsed" :theme="getTheme" />
+          </Layout.Sider>
+          <tabs-view />
+        </Layout>
       </Layout.Content>
       <PageFooter />
     </Layout>

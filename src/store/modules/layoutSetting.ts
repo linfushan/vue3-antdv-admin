@@ -18,7 +18,7 @@ import { themeColor, type ThemeColor } from '@/layout/header/components/setting/
 export type LayoutSetting = {
   navTheme: ThemeColor; // theme for nav menu
   colorPrimary: string; // '#F5222D', // primary color of ant design
-  layout: 'sidemenu' | 'topmenu'; // nav menu position: `sidemenu` or `topmenu`
+  layout: 'sidemenu' | 'topmenu' | 'fulltop'; // nav menu position: `sidemenu` or `topmenu` , new 'fulltop'
   contentWidth: 'Fluid' | 'Fixed'; // layout of content: `Fluid` or `Fixed`, only works when layout is topmenu
   fixedHeader: false; // sticky header
   fixSiderbar: false; // sticky siderbar
@@ -37,7 +37,7 @@ export type LayoutSetting = {
 export const defaultSetting: LayoutSetting = {
   navTheme: 'dark', // theme for nav menu
   colorPrimary: '#1677FF', // '#F5222D', // primary color of ant design
-  layout: 'sidemenu', // nav menu position: `sidemenu` or `topmenu`
+  layout: 'sidemenu', // nav menu position: `sidemenu` or `topmenu`、 'fulltop'
   contentWidth: 'Fluid', // layout of content: `Fluid` or `Fixed`, only works when layout is topmenu
   fixedHeader: false, // sticky header
   fixSiderbar: false, // sticky siderbar

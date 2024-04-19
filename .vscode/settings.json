@@ -34,17 +34,22 @@
     "**/.yarn": true
   },
   "files.exclude": {
-    "**/.cache": true,
-    "**/.editorconfig": true,
-    "**/.eslintcache": true,
-    "**/bower_components": true,
-    "**/.idea": true,
-    "**/tmp": true,
     "**/.git": true,
     "**/.svn": true,
     "**/.hg": true,
     "**/CVS": true,
-    "**/.DS_Store": true
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/tmp": true,
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/dist": true,
+    "**/.history": true,
+    "**/.vscode": false,
+    "**/.cache": true,
+    "**/.editorconfig": true,
+    "**/.eslintcache": true,
+    "**/.idea": true
   },
   "files.watcherExclude": {
     "**/.git/objects/**": true,
@@ -95,7 +100,7 @@
       "source.fixAll.eslint": "explicit",
       "source.fixAll.stylelint": "explicit"
     },
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "i18n-ally.localesPaths": ["src/locales/lang"],
   "i18n-ally.keystyle": "nested",
@@ -105,5 +110,9 @@
   "i18n-ally.enabledParsers": ["json"],
   "i18n-ally.sourceLanguage": "en",
   "i18n-ally.displayLanguage": "zh-CN",
-  "i18n-ally.enabledFrameworks": ["vue", "react"]
+  "i18n-ally.enabledFrameworks": [
+    "vue",
+    "react"
+  ],
+  "explorerExclude.backup": {}
 }
