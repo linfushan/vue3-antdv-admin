@@ -1,18 +1,21 @@
 <template>
   <div class="menu-container" :class="{ 'is-side-menu': isSideMenu }">
-    <Menu
-      v-model:selected-keys="selectedKeys"
-      :open-keys="isSideMenu ? openKeys : []"
-      :mode="isSideMenu ? 'inline' : 'horizontal'"
-      :theme="theme"
-      :collapsed="props.collapsed"
-      collapsible
-      @click="clickMenuItem"
-    >
-      <template v-for="item in menus" :key="item.name">
-        <SubMenuItem :item="item" />
-      </template>
-    </Menu>
+    <div class="menu-scroll-area">
+      <Menu
+        v-model:selected-keys="selectedKeys"
+        :open-keys="isSideMenu ? openKeys : []"
+        :mode="isSideMenu ? 'inline' : 'horizontal'"
+        :theme="theme"
+        :collapsed="props.collapsed"
+        collapsible
+        @click="clickMenuItem"
+      >
+        <template v-for="item in menus" :key="item.name">
+          <SubMenuItem :item="item" />
+        </template>
+      </Menu>
+    </div>
+    <MenuFooter :collapsed="props.collapsed" />
   </div>
 </template>
 
@@ -21,6 +24,7 @@
   import { useRoute, useRouter } from 'vue-router';
   import { Menu, type MenuTheme, type MenuProps } from 'ant-design-vue';
   import SubMenuItem from './components/sub-menu-item.vue';
+  import MenuFooter from './components/menu-footer.vue';
   import { useUserStore } from '@/store/modules/user';
   import { useLayoutSettingStore } from '@/store/modules/layoutSetting';
   import { LOGIN_NAME } from '@/router/constant';
@@ -95,8 +99,14 @@
 
 <style lang="less" scoped>
   .menu-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 100%;
-    overflow: auto;
+
+    .menu-scroll-area {
+      overflow-y: auto;
+    }
 
     &::-webkit-scrollbar {
       width: 0;

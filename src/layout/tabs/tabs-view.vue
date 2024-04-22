@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-view">
+  <div id="main-tabs-view" class="tabs-view">
     <a-tabs
       :active-key="activeKey"
       hide-add
@@ -86,24 +86,63 @@
 </script>
 
 <style lang="less" scoped>
-  .dark .tabs-view {
-    border-top: 1px solid black;
-  }
-
   .tabs-view {
+    @apply dark:bg-black;
+
     border-top: 1px solid #eee;
+    background-color: rgb(245 245 245 / 100%);
 
     :deep(.tabs) {
       .ant-tabs-nav {
-        @apply bg-white dark:bg-black;
+        @apply dark:bg-black;
 
         margin: 0;
-        padding: 4px 20px 0 10px;
+        padding: 4px 8px 4px 10px;
+        background-color: rgb(245 245 245 / 100%);
         user-select: none;
       }
 
       .ant-tabs-tabpane {
         display: none;
+      }
+
+      .ant-tabs-tab {
+        position: relative;
+        padding: 4px 16px;
+        border-radius: 6px;
+        background-color: transparent;
+        color: rgb(0 0 0 / 65%);
+        font-size: 14px;
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          width: 1px;
+          height: 22px;
+          background-color: rgb(0 0 0 / 15%);
+        }
+
+        &:first-child::before {
+          display: none;
+        }
+
+        &:hover {
+          background-color: rgb(0 0 0 / 6%);
+
+          &::before,
+          & + .ant-tabs-tab::before {
+            display: none;
+          }
+        }
+
+        &.ant-tabs-tab-active {
+          background-color: #fff;
+
+          &::before {
+            display: none;
+          }
+        }
       }
 
       .ant-tabs-tab-remove {
@@ -128,6 +167,9 @@
         }
 
         &:hover {
+          background-color: rgb(0 0 0 / 6%);
+          color: rgb(0 0 0 / 88%);
+
           .anticon-close {
             visibility: visible;
             width: 16px;
@@ -139,6 +181,20 @@
           }
         }
       }
+
+      .ant-tabs-extra-content {
+        width: 36px;
+        height: 30px;
+        border-radius: 2px;
+        background-color: #fff;
+        font-size: 12px;
+        line-height: 30px;
+        text-align: center;
+
+        span {
+          color: rgb(102 102 102 / 100%);
+        }
+      }
     }
 
     .tabs-view-content {
@@ -146,6 +202,32 @@
       height: calc(100vh - 110px - var(--app-footer-height));
       padding: 20px 14px 0;
       overflow: auto;
+    }
+  }
+
+  .dark .tabs-view {
+    border-top: 1px solid black;
+
+    :deep(.tabs) {
+      .ant-tabs-tab {
+        background-color: transparent;
+        color: rgb(255 255 255 / 45%);
+
+        &:hover,
+        &.ant-tabs-tab-active {
+          background-color: #111a2c;
+        }
+
+        &:not(.ant-tabs-tab-active) {
+          &:hover {
+            color: #fff;
+          }
+        }
+      }
+
+      .ant-tabs-extra-content {
+        background-color: #001529;
+      }
     }
   }
 </style>

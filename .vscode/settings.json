@@ -7,6 +7,7 @@
   // "vue.server.maxOldSpaceSize": 4096,
   // "vue.server.hybridMode": true,
   // "typescript.tsserver.maxTsServerMemory": 4096,
+  "less.lint.unknownAtRules": "ignore",
   "files.eol": "\n",
   "search.exclude": {
     "**/node_modules": true,

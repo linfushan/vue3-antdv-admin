@@ -2,7 +2,7 @@
   <Layout.Header :style="headerStyle" class="layout-header">
     <div class="header-left">
       <slot name="left">
-        <Space :size="20">
+        <Space :size="16">
           <Logo v-if="layoutSetting.layout === 'fulltop'" :collapsed="collapsed" />
           <span
             class="menu-fold cursor-pointer"
@@ -18,7 +18,7 @@
       <slot name="menu" />
     </div>
     <div class="header-right">
-      <Space :size="20">
+      <Space :size="16">
         <Search />
         <Tooltip :title="$t('layout.header.tooltipLock')" placement="bottom">
           <LockOutlined @click="lockscreenStore.setLock(true)" />
@@ -137,7 +137,27 @@
     align-items: center;
     justify-content: space-between;
     height: var(--app-header-height);
-    padding: 0 20px;
+    padding: 0 18px;
+
+    .header-left {
+      height: var(--app-header-height);
+
+      :deep(.ant-space) {
+        .ant-space-item:nth-child(2) {
+          position: relative;
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: 19px;
+            left: -16px;
+            width: 1px;
+            height: 22px;
+            background-color: #ddd;
+          }
+        }
+      }
+    }
 
     .header-right {
       min-width: 180px;

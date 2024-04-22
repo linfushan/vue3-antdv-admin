@@ -1,9 +1,9 @@
 import { reactive, computed, watchPostEffect } from 'vue';
 import { defineStore } from 'pinia';
 import { theme as antdTheme } from 'ant-design-vue';
+import themeToken from './themeToken';
 import type { ThemeConfig } from 'ant-design-vue/es/config-provider/context';
 import { themeColor, type ThemeColor } from '@/layout/header/components/setting/constant';
-
 /**
  * 项目默认配置项
  * primaryColor - 默认主题色, 如果修改颜色不生效，请清理 localStorage
@@ -35,9 +35,9 @@ export type LayoutSetting = {
 };
 
 export const defaultSetting: LayoutSetting = {
-  navTheme: 'dark', // theme for nav menu
+  navTheme: 'light', // theme for nav menu
   colorPrimary: '#1677FF', // '#F5222D', // primary color of ant design
-  layout: 'sidemenu', // nav menu position: `sidemenu` or `topmenu`、 'fulltop'
+  layout: 'fulltop', // nav menu position: `sidemenu` or `topmenu`、 'fulltop'
   contentWidth: 'Fluid', // layout of content: `Fluid` or `Fixed`, only works when layout is topmenu
   fixedHeader: false, // sticky header
   fixSiderbar: false, // sticky siderbar
@@ -61,9 +61,10 @@ export const useLayoutSettingStore = defineStore(
       algorithm: themeColor[layoutSetting.navTheme!] || antdTheme.defaultAlgorithm,
       token: {
         colorPrimary: layoutSetting.colorPrimary,
+        ...themeToken.token,
       },
     });
-
+    console.warn('themeConfig', themeConfig);
     const getNavTheme = computed(() => {
       return layoutSetting.navTheme;
     });

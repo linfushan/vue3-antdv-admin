@@ -1,11 +1,19 @@
 <template>
-  <div class="logo">
+  <div
+    class="logo"
+    :class="{ 'full-top': layoutSetting.layout === 'fulltop', collapsed: collapsed }"
+  >
     <img src="~@/assets/images/logo.png" alt="" />
     <h2 v-show="!collapsed" class="title">One Piece</h2>
   </div>
 </template>
 
 <script setup>
+  import { storeToRefs } from 'pinia';
+  import { useLayoutSettingStore } from '@/store/modules/layoutSetting';
+
+  const layoutSettingStore = useLayoutSettingStore();
+  const { layoutSetting } = storeToRefs(layoutSettingStore);
   defineProps({
     collapsed: {
       type: Boolean,
@@ -17,10 +25,18 @@
   .logo {
     @apply flex overflow-hidden whitespace-nowrap items-center;
 
-    // min-width: var(--app-sidemenu-width);
-    height: 64px;
+    height: var(--app-header-height);
     padding-left: 24px;
-    line-height: 64px;
+    line-height: var(--app-header-height);
+
+    &.full-top {
+      min-width: calc(var(--app-sidemenu-width) - 18px);
+      padding-left: 0;
+
+      &.collapsed {
+        min-width: auto;
+      }
+    }
 
     img {
       height: 32px;

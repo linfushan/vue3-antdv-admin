@@ -11,3 +11,43 @@ body {
 .ant-image-preview-root img {
   display: unset;
 }
+
+.ant-layout {
+  .ant-layout-header {
+    height: var(--app-header-height);
+    line-height: var(--app-header-height);
+  }
+
+  .ant-layout-sider-light {
+    background-color: rgb(0 0 0 / 2%);
+  }
+
+  .ant-menu-light {
+    background-color: transparent;
+
+    // .ant-menu-submenu-open {
+    //   & > div.ant-menu-submenu-title {
+    //     background-color: rgb(0 0 0 / 6%);
+    //   }
+    // }
+    .ant-menu-submenu-selected {
+      & > .ant-menu-submenu-title {
+        color: inherit;
+      }
+    }
+
+    &.ant-menu-inline {
+      .ant-menu-sub.ant-menu-inline {
+        background-color: transparent;
+      }
+    }
+  }
+
+  .ant-tabs-top > .ant-tabs-nav::before {
+    border-bottom: none;
+  }
+
+  .ant-tabs-card > .ant-tabs-nav .ant-tabs-tab {
+    border: none;
+  }
+}

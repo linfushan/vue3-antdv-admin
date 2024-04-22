@@ -126,7 +126,7 @@
 <template>
   <a-dropdown :trigger="[isExtra ? 'click' : 'contextmenu']">
     <a v-if="isExtra" class="ant-dropdown-link" @click.prevent>
-      <down-outlined :style="{ fontSize: '20px' }" />
+      <down-outlined :style="{ fontSize: '12px' }" />
     </a>
     <div v-else style="display: inline-block">
       <TitleI18n :title="tabItem.meta?.title" />
