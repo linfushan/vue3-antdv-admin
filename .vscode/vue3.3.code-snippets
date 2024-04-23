@@ -3,9 +3,8 @@
     "scope": "vue",
     "prefix": "Vue3.3+",
     "body": [
-      "<script setup lang='ts'>",
+      "<script setup lang='ts' name='${TM_FILENAME_BASE}'>",
       "defineOptions({",
-      "\tname: '${TM_FILENAME_BASE}'",
       "})",
       "</script>\n",
       "<template>",

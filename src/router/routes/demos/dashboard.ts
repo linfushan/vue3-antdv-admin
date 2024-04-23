@@ -20,7 +20,7 @@ const routes: Array<RouteRecordRaw> = [
           title: t('routes.dashboard.workbench'),
           icon: 'ant-design:home-filled',
         },
-        component: () => import('@/views/dashboard/welcome/index.vue'),
+        component: () => import('@/views/demos/welcome/index.vue'),
       },
     ],
   },

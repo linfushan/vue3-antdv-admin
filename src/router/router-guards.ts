@@ -1,7 +1,7 @@
 import { NavigationFailureType, isNavigationFailure } from 'vue-router';
 import NProgress from 'nprogress'; // progress bar
 import { Modal } from 'ant-design-vue';
-import { LOGIN_NAME, PAGE_NOT_FOUND_NAME, REDIRECT_NAME } from './constant';
+import { LOGIN_NAME, PAGE_NOT_FOUND_NAME, REDIRECT_NAME, DEFAULT_ROUTE_PATH } from './constant';
 import type { WhiteNameList } from './constant';
 import type { Router, RouteLocationNormalized } from 'vue-router';
 import { useUserStore } from '@/store/modules/user';
@@ -11,7 +11,7 @@ import { transformI18n } from '@/hooks/useI18n';
 
 NProgress.configure({ showSpinner: false }); // NProgress Configuration
 
-const defaultRoutePath = '/dashboard/welcome';
+const defaultRoutePath = DEFAULT_ROUTE_PATH;
 
 export function createRouterGuards(router: Router, whiteNameList: WhiteNameList) {
   router.beforeEach(async (to, from, next) => {

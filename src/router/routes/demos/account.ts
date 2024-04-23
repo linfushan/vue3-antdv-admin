@@ -9,14 +9,13 @@ const routes: Array<RouteRecordRaw> = [
     redirect: '/account/settings',
     meta: {
       title: '个人中心',
-      hideInMenu: true,
     },
     children: [
       {
         path: 'settings',
         name: `${moduleName}-settings`,
-        component: () => import('@/views/account/settings.vue'),
-        meta: { title: t('routes.account.settings'), hideInMenu: true },
+        component: () => import('@/views/demos/account/settings.vue'),
+        meta: { title: t('routes.account.settings') },
       },
     ],
   },
