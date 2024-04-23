@@ -127,19 +127,26 @@
           display: none;
         }
 
+        &.ant-tabs-tab-active {
+          background-color: #fff;
+
+          &::before {
+            display: none;
+          }
+
+          &:hover {
+            span {
+              color: rgb(0 0 0 / 88%);
+              text-shadow: none;
+            }
+          }
+        }
+
         &:hover {
           background-color: rgb(0 0 0 / 6%);
 
           &::before,
           & + .ant-tabs-tab::before {
-            display: none;
-          }
-        }
-
-        &.ant-tabs-tab-active {
-          background-color: #fff;
-
-          &::before {
             display: none;
           }
         }
@@ -151,7 +158,11 @@
         padding: 0;
 
         .anticon-close {
-          padding-left: 6px;
+          margin-left: 6px;
+
+          &:hover {
+            background-color: rgb(0 0 0 / 6%);
+          }
         }
       }
 
@@ -170,10 +181,18 @@
           background-color: rgb(0 0 0 / 6%);
           color: rgb(0 0 0 / 88%);
 
+          span {
+            color: rgb(0 0 0 / 88%);
+          }
+
           .anticon-close {
             visibility: visible;
-            width: 16px;
-            padding-left: 6px;
+            width: 12px;
+            margin-left: 6px;
+
+            &:hover {
+              background-color: rgb(0 0 0 / 6%);
+            }
           }
 
           .ant-tabs-tab-remove {
@@ -198,9 +217,11 @@
     }
 
     .tabs-view-content {
+      @apply bg-white dark:bg-black;
+
       /* height: calc(100vh - #{$header-height}); */
-      height: calc(100vh - 110px - var(--app-footer-height));
-      padding: 20px 14px 0;
+      height: calc(100vh - 100px - var(--app-footer-height));
+      padding: 16px;
       overflow: auto;
     }
   }
@@ -216,6 +237,13 @@
         &:hover,
         &.ant-tabs-tab-active {
           background-color: #111a2c;
+
+          &:hover {
+            span {
+              color: #fff;
+              text-shadow: none;
+            }
+          }
         }
 
         &:not(.ant-tabs-tab-active) {

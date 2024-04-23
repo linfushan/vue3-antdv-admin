@@ -6,6 +6,7 @@
           v-if="getProps.search"
           ref="queryFormRef"
           class="bg-white dark:bg-black mb-16px !pt-24px pr-24px"
+          :class="{ fullscreen: isFullscreen }"
           submit-on-reset
           v-bind="getFormProps"
           :schemas="formSchemas"
@@ -178,5 +179,11 @@
 
   .actions > * {
     margin-right: 10px;
+  }
+
+  .fullscreen {
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
   }
 </style>

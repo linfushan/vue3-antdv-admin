@@ -19,7 +19,7 @@ export type LayoutSetting = {
   navTheme: ThemeColor; // theme for nav menu
   colorPrimary: string; // '#F5222D', // primary color of ant design
   layout: 'sidemenu' | 'topmenu' | 'fulltop'; // nav menu position: `sidemenu` or `topmenu` , new 'fulltop'
-  contentWidth: 'Fluid' | 'Fixed'; // layout of content: `Fluid` or `Fixed`, only works when layout is topmenu
+  contentWidth: 'Fluid' | 'Fixed'; // layout of content: `Fluid` or `Fixed`, only works when layout is topmenu or fulltop
   fixedHeader: false; // sticky header
   fixSiderbar: false; // sticky siderbar
   colorWeak: false;
@@ -38,7 +38,7 @@ export const defaultSetting: LayoutSetting = {
   navTheme: 'light', // theme for nav menu
   colorPrimary: '#1677FF', // '#F5222D', // primary color of ant design
   layout: 'fulltop', // nav menu position: `sidemenu` or `topmenu`、 'fulltop'
-  contentWidth: 'Fluid', // layout of content: `Fluid` or `Fixed`, only works when layout is topmenu
+  contentWidth: 'Fixed', // layout of content: `Fluid` or `Fixed`, only works when layout is topmenu
   fixedHeader: false, // sticky header
   fixSiderbar: false, // sticky siderbar
   colorWeak: false,

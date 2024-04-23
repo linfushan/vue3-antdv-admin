@@ -11,7 +11,6 @@ export const asyncRoutes = Object.entries(modulesFiles).reduce((routes, [url, im
     const path = url.replace('../../views/', '').replace('.vue', '');
     routes[path] = importFn;
   }
-
   return routes;
 }, {} as Recordable<ImportVueFileFnType>);
 

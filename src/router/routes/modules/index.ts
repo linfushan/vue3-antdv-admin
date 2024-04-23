@@ -1,6 +1,14 @@
-import dashboard from './dashboard';
-import demos from './demos';
-import externaLink from './externa-link';
-import account from './account';
+import demoRoutes from '../demos';
+import homepageRoutes from './homepage';
+import type { RouteRecordRaw } from 'vue-router';
 
-export default [...dashboard, ...demos, ...externaLink, ...account];
+let routes: Array<RouteRecordRaw> = [];
+
+if (process.env.NODE_ENV === 'development') {
+  // 开发环境参考路由模版
+  routes = [...homepageRoutes, ...demoRoutes];
+} else {
+  // 其他环境(生产环境)
+}
+
+export default routes;

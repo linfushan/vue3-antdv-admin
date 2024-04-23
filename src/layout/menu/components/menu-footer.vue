@@ -37,9 +37,9 @@
             <li>USD/CNY: <span>7.322</span></li>
           </ul>
           <div class="menu-footer-btns">
-            <a-button type="link" :icon="h(AppstoreOutlined)">设置</a-button>
+            <a-button type="text" :icon="h(AppstoreOutlined)">设置</a-button>
             <a-divider type="vertical" style="height: 18px" />
-            <a-button type="link" :icon="h(ReloadOutlined)">刷新</a-button>
+            <a-button type="text" :icon="h(ReloadOutlined)">刷新</a-button>
           </div>
         </template>
         <a-button type="link" :icon="h(AppstoreOutlined)" />

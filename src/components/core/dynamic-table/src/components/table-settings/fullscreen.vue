@@ -11,7 +11,6 @@
   const updateAppContainerStyle = () => {
     const appEl: HTMLDivElement =
       currentInstance?.appContext.app._container || document.querySelector('#app');
-
     appEl.style.setProperty('opacity', isFullscreen.value ? '0' : '1');
     appEl.style.setProperty('visibility', isFullscreen.value ? 'hidden' : 'visible');
     appEl.style.setProperty('position', isFullscreen.value ? 'absolute' : 'relative');
