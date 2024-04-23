@@ -19,6 +19,7 @@
     </div>
     <div class="header-right">
       <Space :size="16">
+        <Time />
         <Search />
         <Tooltip :title="$t('layout.header.tooltipLock')" placement="bottom">
           <LockOutlined @click="lockscreenStore.setLock(true)" />
@@ -70,7 +71,7 @@
     type MenuTheme,
   } from 'ant-design-vue';
   import Logo from '../logo/index.vue';
-  import { Search, FullScreen, ProjectSetting, LayoutBreadcrumb } from './components/';
+  import { Search, FullScreen, ProjectSetting, LayoutBreadcrumb, Time } from './components/';
   import { LocalePicker } from '@/components/basic/locale-picker';
   import { useUserStore } from '@/store/modules/user';
   import { useKeepAliveStore } from '@/store/modules/keepAlive';

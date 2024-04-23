@@ -130,7 +130,8 @@
         &.ant-tabs-tab-active {
           background-color: #fff;
 
-          &::before {
+          &::before,
+          & + .ant-tabs-tab::before {
             display: none;
           }
 

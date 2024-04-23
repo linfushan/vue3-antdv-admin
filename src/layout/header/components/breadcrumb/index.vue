@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { computed } from 'vue';
+  import { ref, computed } from 'vue';
   import { useRoute, useRouter, type RouteRecordRaw } from 'vue-router';
   import { useUserStore } from '@/store/modules/user';
 
@@ -10,7 +10,7 @@
   const router = useRouter();
   const route = useRoute();
   const userStore = useUserStore();
-
+  const showBreadcrumbOverlay = ref(false);
   // 点击菜单
   const clickMenuItem = (menuItem: RouteRecordRaw) => {
     const { isExt, extOpenMode, type } = menuItem?.meta || {};
@@ -33,29 +33,34 @@
         children = a?.children || [];
         return a;
       });
-      return [
-        {
-          name: '__index',
-          meta: {
-            title: '首页',
-          },
-          children: userStore.menus,
-        },
-        ...paths,
-      ];
+      // [
+      //   {
+      //     name: 'homepage',
+      //     meta: {
+      //       title: '首页',
+      //     },
+      //     children: userStore.menus,
+      //   },
+      //   ...paths,
+      // ]
+      return [...paths];
     }
     return route.matched;
   });
-
+  console.log('🚀  menus  menus:', menus);
   const getSelectKeys = (rotueIndex: number) => {
     return [menus.value[rotueIndex + 1]?.name] as string[];
+  };
+
+  const clickBreadCrumbItem = (item) => {
+    console.log(item);
   };
 </script>
 
 <template>
-  <a-breadcrumb>
+  <a-breadcrumb @click="clickBreadCrumbItem">
     <template v-for="(routeItem, rotueIndex) in menus" :key="routeItem?.name">
-      <a-breadcrumb-item>
+      <a-breadcrumb-item v-if="showBreadcrumbOverlay">
         <TitleI18n :title="routeItem?.meta?.title" class="cursor-pointer" />
         <template v-if="routeItem?.children?.length" #overlay>
           <a-menu :selected-keys="getSelectKeys(rotueIndex)">
@@ -70,6 +75,9 @@
             </template>
           </a-menu>
         </template>
+      </a-breadcrumb-item>
+      <a-breadcrumb-item v-else @click="clickMenuItem(routeItem as RouteRecordRaw)">
+        <TitleI18n :title="routeItem?.meta?.title" class="cursor-pointer" />
       </a-breadcrumb-item>
     </template>
   </a-breadcrumb>

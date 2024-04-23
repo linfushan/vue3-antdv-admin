@@ -51,5 +51,5 @@ export function useTime() {
     clearInterval(timer);
   });
 
-  return { month, day, hour, minute, second, week };
+  return { year, month, day, hour, minute, second, week };
 }

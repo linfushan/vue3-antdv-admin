@@ -31,6 +31,8 @@ export type LayoutSetting = {
   iconfontUrl: string;
   /** 是否缓存标签页 */
   cacheTabs: boolean;
+  /** 面包屑是否下拉 */
+  breadcrumbOverlay: boolean;
   // production: process.env.NODE_ENV === 'production' && process.env.VUE_APP_PREVIEW !== 'true'
 };
 
@@ -45,10 +47,11 @@ export const defaultSetting: LayoutSetting = {
   menu: {
     locale: true,
   },
-  title: 'vite-antdv-admin',
+  title: 'ERP',
   pwa: false,
   iconfontUrl: '',
   cacheTabs: false,
+  breadcrumbOverlay: false,
   // production: process.env.NODE_ENV === 'production' && process.env.VUE_APP_PREVIEW !== 'true',
 };
 
