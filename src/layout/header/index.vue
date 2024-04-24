@@ -4,10 +4,7 @@
       <slot name="left">
         <Space :size="16">
           <Logo v-if="layoutSetting.layout === 'fulltop'" :collapsed="collapsed" />
-          <span
-            class="menu-fold cursor-pointer"
-            @click="() => emit('update:collapsed', !collapsed)"
-          >
+          <span class="menu-fold cursor-pointer" @click="handleToggleCollpased">
             <component :is="collapsed ? MenuUnfoldOutlined : MenuFoldOutlined" />
           </span>
           <LayoutBreadcrumb />
@@ -79,7 +76,7 @@
   import { LOGIN_NAME } from '@/router/constant';
   import { useLayoutSettingStore } from '@/store/modules/layoutSetting';
 
-  defineProps({
+  const props = defineProps({
     collapsed: {
       type: Boolean,
     },
@@ -105,7 +102,10 @@
       color: isDark ? 'rgba(255, 255, 255, 0.85)' : '',
     };
   });
-
+  const handleToggleCollpased = () => {
+    layoutSettingStore.setSiderCollapsed(!props.collapsed);
+    emit('update:collapsed', !props.collapsed);
+  };
   // 退出登录
   const doLogout = () => {
     Modal.confirm({
@@ -133,12 +133,13 @@
   .layout-header {
     display: flex;
     position: sticky;
-    z-index: 10;
+    z-index: 1001;
     top: 0;
     align-items: center;
     justify-content: space-between;
     height: var(--app-header-height);
     padding: 0 18px;
+    background-color: #fff !important;
 
     .header-left {
       height: var(--app-header-height);
@@ -170,5 +171,9 @@
       align-items: center;
       min-width: 0;
     }
+  }
+
+  .dark .layout-header {
+    background-color: #001529 !important;
   }
 </style>

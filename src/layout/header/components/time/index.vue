@@ -1,15 +1,6 @@
 <script setup lang="ts">
   import { useTime } from '@/hooks/useTime';
   const { year, month, day, hour, minute, second } = useTime();
-  console.log(
-    '🚀  year, month, day, hour, minute, second:',
-    year,
-    month,
-    day,
-    hour,
-    minute,
-    second,
-  );
   defineOptions({
     name: 'countDownTime',
   });

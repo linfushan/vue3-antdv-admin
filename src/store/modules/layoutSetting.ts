@@ -33,6 +33,8 @@ export type LayoutSetting = {
   cacheTabs: boolean;
   /** 面包屑是否下拉 */
   breadcrumbOverlay: boolean;
+  /** 侧边栏关闭 */
+  collpased: boolean;
   // production: process.env.NODE_ENV === 'production' && process.env.VUE_APP_PREVIEW !== 'true'
 };
 
@@ -52,6 +54,7 @@ export const defaultSetting: LayoutSetting = {
   iconfontUrl: '',
   cacheTabs: false,
   breadcrumbOverlay: false,
+  collpased: true,
   // production: process.env.NODE_ENV === 'production' && process.env.VUE_APP_PREVIEW !== 'true',
 };
 
@@ -67,7 +70,7 @@ export const useLayoutSettingStore = defineStore(
         ...themeToken.token,
       },
     });
-    console.warn('themeConfig', themeConfig);
+    // console.warn('themeConfig', themeConfig);
     const getNavTheme = computed(() => {
       return layoutSetting.navTheme;
     });
@@ -99,7 +102,10 @@ export const useLayoutSettingStore = defineStore(
     const updateLayoutSetting = (settings: Partial<LayoutSetting>) => {
       Object.assign(layoutSetting, settings);
     };
-
+    /** 侧边栏状态 */
+    const setSiderCollapsed = (collapsed: boolean) => {
+      layoutSetting.collpased = collapsed;
+    };
     return {
       layoutSetting,
       themeConfig,
@@ -107,6 +113,7 @@ export const useLayoutSettingStore = defineStore(
       toggleTheme,
       setColorPrimary,
       updateLayoutSetting,
+      setSiderCollapsed,
     };
   },
   {

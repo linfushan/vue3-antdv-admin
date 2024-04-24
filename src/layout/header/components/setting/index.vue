@@ -1,6 +1,11 @@
 <template>
   <SettingOutlined @click="showDrawer" />
-  <Drawer v-model:open="visible" placement="right" :closable="false">
+  <Drawer
+    v-model:open="visible"
+    placement="right"
+    :closable="false"
+    rootClassName="project-setting-drawer"
+  >
     <Descriptions title="整体风格" :column="5">
       <Descriptions.Item v-for="theme in themeStyle" :key="theme.value">
         <Tooltip :title="theme.label">
@@ -107,11 +112,15 @@
   // };
 
   const showDrawer = () => {
-    visible.value = true;
+    visible.value = !visible.value;
   };
 </script>
 
 <style lang="less" scoped>
+  :global(.ant-drawer.project-setting-drawer) {
+    z-index: 1002;
+  }
+
   .style-checbox-item {
     position: relative;
     cursor: pointer;

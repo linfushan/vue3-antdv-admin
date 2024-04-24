@@ -66,7 +66,7 @@ export const generateDynamicRoutes = (menus: RouteRecordRaw[]) => {
   genNamePathForRoutes(allRoute);
   rootRoute.children = allRoute;
   router.addRoute(rootRoute);
-  console.log('routes', router.getRoutes());
+  // console.log('routes', router.getRoutes());
   return routes;
 };
 

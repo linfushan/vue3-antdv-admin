@@ -14,12 +14,22 @@ const routes: Array<RouteRecordRaw> = [
     },
     children: [
       {
+        path: 'custom-drawer',
+        name: `${moduleName}-custom-drawer`,
+        meta: {
+          title: '侧边栏页面',
+          icon: 'ant-design:desktop-outlined',
+          keepAlive: true,
+        },
+        component: () => import('@/views/demos/drawer.vue'),
+      },
+      {
         path: 'custom-modal',
         name: `${moduleName}-custom-modal`,
         meta: {
           title: t('routes.demo.modal'),
           icon: 'ant-design:desktop-outlined',
-          keepAlive: false,
+          keepAlive: true,
         },
         component: () => import('@/views/demos/custom-modal.vue'),
       },
@@ -49,7 +59,7 @@ const routes: Array<RouteRecordRaw> = [
             meta: {
               title: t('routes.demo.form.basic'),
               icon: 'ant-design:desktop-outlined',
-              keepAlive: false,
+              keepAlive: true,
             },
             component: () => import('@/views/demos/form/basic-form/index.vue'),
           },
@@ -59,7 +69,7 @@ const routes: Array<RouteRecordRaw> = [
             meta: {
               title: t('routes.demo.form.rule'),
               icon: 'ant-design:desktop-outlined',
-              keepAlive: false,
+              keepAlive: true,
             },
             component: () => import('@/views/demos/form/rule-form/index.vue'),
           },

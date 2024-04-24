@@ -42,7 +42,7 @@
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
     "**/tmp": true,
-    "**/node_modules": true,
+    "**/node_modules": false,
     "**/bower_components": true,
     "**/dist": true,
     "**/.history": true,

@@ -59,7 +59,7 @@
   const { layoutSetting } = storeToRefs(layoutSettingStore);
   const collapsed = ref<boolean>(false);
   // 自定义侧边栏菜单收缩和展开时的宽度
-  const asiderWidth = computed(() => (collapsed.value ? 80 : 264));
+  const asiderWidth = computed(() => (!collapsed.value ? 264 : 80));
   const getTheme = computed(() => (layoutSetting.value.navTheme === 'light' ? 'light' : 'dark'));
 </script>
 

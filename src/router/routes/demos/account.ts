@@ -14,7 +14,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'settings',
         name: `${moduleName}-settings`,
-        component: () => import('@/views/demos/account/settings.vue'),
+        component: () => import('@/views/account/settings.vue'),
         meta: { title: t('routes.account.settings') },
       },
     ],

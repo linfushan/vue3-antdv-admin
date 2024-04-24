@@ -47,7 +47,6 @@
     }
     return route.matched;
   });
-  console.log('🚀  menus  menus:', menus);
   const getSelectKeys = (rotueIndex: number) => {
     return [menus.value[rotueIndex + 1]?.name] as string[];
   };
