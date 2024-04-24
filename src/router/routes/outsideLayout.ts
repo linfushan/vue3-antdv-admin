@@ -1,5 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router';
-import { LOGIN_NAME, REGISTER_NAME } from '@/router/constant';
+import { LOGIN_NAME, REGISTER_NAME, FORGET_NAME } from '@/router/constant';
 
 /**
  * layout布局之外的路由
@@ -20,7 +20,14 @@ export const RegisterRoute: RouteRecordRaw = {
     title: '注册',
   },
 };
-
+export const ForgetRoute: RouteRecordRaw = {
+  path: '/forget',
+  name: FORGET_NAME,
+  component: () => import('@/views/login/forget.vue'),
+  meta: {
+    title: '忘记密码',
+  },
+};
 export const CreateRoute: RouteRecordRaw = {
   path: '/create',
   name: 'CreateMerchant',
@@ -29,4 +36,4 @@ export const CreateRoute: RouteRecordRaw = {
     title: '创建商家',
   },
 };
-export default [LoginRoute, RegisterRoute, CreateRoute];
+export default [LoginRoute, RegisterRoute, ForgetRoute, CreateRoute];

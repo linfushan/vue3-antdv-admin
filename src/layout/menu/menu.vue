@@ -6,7 +6,7 @@
         :open-keys="isSideMenu ? openKeys : []"
         :mode="isSideMenu ? 'inline' : 'horizontal'"
         :theme="theme"
-        :collapsed="props.collapsed"
+        :collapsed="collapsed"
         collapsible
         @click="clickMenuItem"
       >
@@ -15,13 +15,14 @@
         </template>
       </Menu>
     </div>
-    <MenuFooter :collapsed="props.collapsed" />
+    <MenuFooter v-if="layoutSetting.layout !== 'topmenu'" />
   </div>
 </template>
 
 <script setup lang="ts">
   import { ref, computed, watch, type PropType } from 'vue';
   import { useRoute, useRouter } from 'vue-router';
+  import { storeToRefs } from 'pinia';
   import { Menu, type MenuTheme, type MenuProps } from 'ant-design-vue';
   import SubMenuItem from './components/sub-menu-item.vue';
   import MenuFooter from './components/menu-footer.vue';
@@ -29,7 +30,7 @@
   import { useLayoutSettingStore } from '@/store/modules/layoutSetting';
   import { LOGIN_NAME } from '@/router/constant';
 
-  const props = defineProps({
+  defineProps({
     collapsed: {
       // 侧边栏菜单是否收起
       type: Boolean,
@@ -40,6 +41,7 @@
   });
   const userStore = useUserStore();
   const layoutSettingStore = useLayoutSettingStore();
+  const { layoutSetting } = storeToRefs(layoutSettingStore);
   // 当前路由
   const currentRoute = useRoute();
   const router = useRouter();
@@ -61,7 +63,7 @@
 
   // 监听菜单收缩状态
   watch(
-    () => props.collapsed,
+    () => layoutSetting.value.collpased,
     () => {
       selectedKeys.value = [currentRoute.name] as string[];
       setTimeout(() => {
@@ -75,7 +77,7 @@
     () => currentRoute.fullPath,
     () => {
       selectedKeys.value = [currentRoute.meta?.activeMenu ?? currentRoute.name] as string[];
-      if (currentRoute.name === LOGIN_NAME || props.collapsed) return;
+      if (currentRoute.name === LOGIN_NAME || layoutSetting.value.collpased) return;
       openKeys.value = getOpenKeys();
     },
     {

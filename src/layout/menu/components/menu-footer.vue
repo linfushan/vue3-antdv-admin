@@ -1,35 +1,30 @@
 <script setup lang="ts">
-  // import { storeToRefs } from 'pinia';
-  // import { useLayoutSettingStore } from '@/store/modules/layoutSetting';
-
-  // const layoutSettingStore = useLayoutSettingStore();
-  // const { layoutSetting } = storeToRefs(layoutSettingStore);
-  import { h } from 'vue';
+  import { h, computed } from 'vue';
+  import { storeToRefs } from 'pinia';
   import { AppstoreOutlined, ReloadOutlined } from '@ant-design/icons-vue';
+  import { useLayoutSettingStore } from '@/store/modules/layoutSetting';
+
+  const layoutSettingStore = useLayoutSettingStore();
+  const { layoutSetting } = storeToRefs(layoutSettingStore);
   defineOptions({
     name: 'menu-footer',
   });
-  const props = defineProps({
-    collapsed: {
-      // 侧边栏菜单是否收起
-      type: Boolean,
-    },
-  });
+  const collpased = computed(() => layoutSetting.value.collpased);
 </script>
 
 <template>
   <div class="menu-footer">
     <a-divider style="margin: 0" />
-    <ul v-if="!props.collapsed" class="menu-footer-list">
+    <ul v-if="!collpased" class="menu-footer-list">
       <li>EUR/CNY: <span>7.322</span></li>
       <li>USD/CNY: <span>7.322</span></li>
     </ul>
-    <div v-if="!props.collapsed" class="menu-footer-btns">
+    <div v-if="!collpased" class="menu-footer-btns">
       <a-button type="link" :icon="h(AppstoreOutlined)">设置</a-button>
       <a-divider type="vertical" style="height: 18px" />
       <a-button type="link" :icon="h(ReloadOutlined)">刷新</a-button>
     </div>
-    <div v-if="props.collapsed" class="menu-footer-btns" style="padding-top: 12px">
+    <div v-if="collpased" class="menu-footer-btns" style="padding-top: 12px">
       <a-popover placement="leftBottom">
         <template #content>
           <ul class="menu-footer-list">

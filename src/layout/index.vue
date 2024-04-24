@@ -2,37 +2,37 @@
   <Layout class="layout">
     <Layout.Sider
       v-if="layoutSetting.layout === 'sidemenu'"
-      v-model:collapsed="collapsed"
+      v-model:collapsed="layoutSetting.collpased"
       :width="asiderWidth"
       :trigger="null"
       collapsible
       :theme="getTheme"
       class="layout-sider"
     >
-      <Logo :collapsed="collapsed" />
-      <AsideMenu :collapsed="collapsed" :theme="getTheme" />
+      <Logo :collapsed="layoutSetting.collpased" />
+      <AsideMenu :collapsed="layoutSetting.collpased" :theme="getTheme" />
     </Layout.Sider>
     <Layout>
-      <PageHeader v-model:collapsed="collapsed" :theme="getTheme">
+      <PageHeader v-model:collapsed="layoutSetting.collpased" :theme="getTheme">
         <template v-if="layoutSetting.layout === 'topmenu'" #left>
-          <Logo :collapsed="collapsed" />
+          <Logo :collapsed="layoutSetting.collpased" />
         </template>
         <template v-if="layoutSetting.layout === 'topmenu'" #menu>
-          <AsideMenu :collapsed="collapsed" :theme="getTheme" />
+          <AsideMenu :collapsed="layoutSetting.collpased" :theme="getTheme" />
         </template>
       </PageHeader>
       <Layout.Content class="layout-content">
         <Layout>
           <Layout.Sider
             v-if="layoutSetting.layout === 'fulltop'"
-            v-model:collapsed="collapsed"
+            v-model:collapsed="layoutSetting.collpased"
             :width="asiderWidth"
             :trigger="null"
             collapsible
             :theme="getTheme"
             class="layout-sider"
           >
-            <AsideMenu :collapsed="collapsed" :theme="getTheme" />
+            <AsideMenu :collapsed="layoutSetting.collpased" :theme="getTheme" />
           </Layout.Sider>
           <Layout.Content>
             <tabs-view />
@@ -45,7 +45,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref, computed } from 'vue';
+  import { computed } from 'vue';
   import { storeToRefs } from 'pinia';
   import { Layout } from 'ant-design-vue';
   import Logo from './logo/index.vue';
@@ -57,9 +57,9 @@
 
   const layoutSettingStore = useLayoutSettingStore();
   const { layoutSetting } = storeToRefs(layoutSettingStore);
-  const collapsed = ref<boolean>(false);
+
   // 自定义侧边栏菜单收缩和展开时的宽度
-  const asiderWidth = computed(() => (!collapsed.value ? 264 : 80));
+  const asiderWidth = computed(() => (!layoutSetting.value.collpased ? 264 : 80));
   const getTheme = computed(() => (layoutSetting.value.navTheme === 'light' ? 'light' : 'dark'));
 </script>
 

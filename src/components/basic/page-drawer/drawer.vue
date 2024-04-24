@@ -1,5 +1,5 @@
 <script setup lang="ts" name="index">
-  import { ref, watchEffect, h } from 'vue';
+  import { h, ref, watchEffect } from 'vue';
   import { useWindowSize } from '@vueuse/core';
   import { storeToRefs } from 'pinia';
   import { RollbackOutlined } from '@ant-design/icons-vue';
@@ -26,7 +26,6 @@
   watchEffect(() => {
     drawerWidth.value = width.value - (!layoutSetting.value.collpased ? 264 : 80);
   });
-
   // 关闭
   const emit = defineEmits(['update:open', 'close']);
   const handleCloseDrawer = () => {

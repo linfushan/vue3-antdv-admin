@@ -104,7 +104,7 @@ export const useLayoutSettingStore = defineStore(
     };
     /** 侧边栏状态 */
     const setSiderCollapsed = (collapsed: boolean) => {
-      layoutSetting.collpased = collapsed;
+      layoutSetting.collpased = !collapsed;
     };
     return {
       layoutSetting,

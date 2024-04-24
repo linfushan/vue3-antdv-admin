@@ -1,10 +1,10 @@
 <template>
   <div
     class="logo"
-    :class="{ 'full-top': layoutSetting.layout === 'fulltop', collapsed: collapsed }"
+    :class="{ 'full-top': layoutSetting.layout === 'fulltop', collapsed: layoutSetting.collpased }"
   >
     <img src="~@/assets/images/logo.png" alt="" />
-    <h2 v-show="!collapsed" class="title">One Piece</h2>
+    <h2 v-show="!layoutSetting.collpased" class="title">One Piece</h2>
   </div>
 </template>
 
@@ -14,11 +14,6 @@
 
   const layoutSettingStore = useLayoutSettingStore();
   const { layoutSetting } = storeToRefs(layoutSettingStore);
-  defineProps({
-    collapsed: {
-      type: Boolean,
-    },
-  });
 </script>
 
 <style lang="less" scoped>

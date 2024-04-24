@@ -3,9 +3,9 @@
     <div class="header-left">
       <slot name="left">
         <Space :size="16">
-          <Logo v-if="layoutSetting.layout === 'fulltop'" :collapsed="collapsed" />
+          <Logo v-if="layoutSetting.layout === 'fulltop'" />
           <span class="menu-fold cursor-pointer" @click="handleToggleCollpased">
-            <component :is="collapsed ? MenuUnfoldOutlined : MenuFoldOutlined" />
+            <component :is="layoutSetting.collpased ? MenuUnfoldOutlined : MenuFoldOutlined" />
           </span>
           <LayoutBreadcrumb />
         </Space>
@@ -75,16 +75,11 @@
   import { useLockscreenStore } from '@/store/modules/lockscreen';
   import { LOGIN_NAME } from '@/router/constant';
   import { useLayoutSettingStore } from '@/store/modules/layoutSetting';
-
-  const props = defineProps({
-    collapsed: {
-      type: Boolean,
-    },
+  defineProps({
     theme: {
       type: String as PropType<MenuTheme>,
     },
   });
-  const emit = defineEmits(['update:collapsed']);
   const userStore = useUserStore();
   const layoutSettingStore = useLayoutSettingStore();
   const { layoutSetting } = storeToRefs(layoutSettingStore);
@@ -102,9 +97,9 @@
       color: isDark ? 'rgba(255, 255, 255, 0.85)' : '',
     };
   });
+  // 侧边栏状态设置
   const handleToggleCollpased = () => {
-    layoutSettingStore.setSiderCollapsed(!props.collapsed);
-    emit('update:collapsed', !props.collapsed);
+    layoutSettingStore.setSiderCollapsed(layoutSetting.value.collpased);
   };
   // 退出登录
   const doLogout = () => {

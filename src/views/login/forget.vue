@@ -1,9 +1,9 @@
-<script setup lang="ts" name="register">
+<script setup lang="ts" name="forget">
   defineOptions({});
 </script>
 
 <template>
-  <div>注册</div>
+  <div>忘记密码</div>
 </template>
 
 <style lang="less" scoped></style>
